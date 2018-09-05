@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Notes</title>
+</head>
+<body>
+
+{% if note %}
+    {{ note.note_text }}
+    <br>
+    {% if previous %}
+        <a href="/{{ previous.pk }}">Previous</a>
+        &nbsp;
+    {% endif %}
+    {% if next %}
+        <a href="/{{ next.pk }}">Next</a>
+    {% endif %}
+{% else %}
+    <p>No note to display.</p>
+{% endif %}
+
+</body>
+</html>
