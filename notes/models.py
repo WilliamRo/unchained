@@ -7,7 +7,7 @@ class Note(models.Model):
   @property
   def previous(self):
     notes = [note for note in Note.objects.all() if note.pk < self.pk]
-    if len(notes) > 0: return notes[0]
+    if len(notes) > 0: return notes[-1]
     return None
 
   @property
