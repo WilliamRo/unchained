@@ -15,8 +15,8 @@ def index(request, note_id=None):
   template = loader.get_template('index.html')
   context = {
     'note': note,
-    'previous': note.previous,
-    'next': note.next,
+    'previous': note.previous if note else None,
+    'next': note.next if note else None,
   }
   return HttpResponse(template.render(context, request))
 
