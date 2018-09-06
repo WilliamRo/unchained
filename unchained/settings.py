@@ -80,23 +80,27 @@ WSGI_APPLICATION = 'unchained.wsgi.application'
 #         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
 #     }
 # }
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'OPTIONS': {
-#             'read_default_file': os.path.join(BASE_DIR, 'my.cnf'),
-#         },
-#     }
-# }
+
+# Run the command below to give python code access to the database
+# ssh -L 3306:username.mysql.pythonanywhere-services.com:3306 username@ssh.pythonanywhere.com
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'Walien$notes',
-        'USER': 'Walien',
-        'PASSWORD': 'imnotwilliam',
-        'HOST': 'Walien.mysql.pythonanywhere-services.com',
+        'OPTIONS': {
+            'read_default_file': os.path.join(BASE_DIR, 'my.cnf'),
+        },
     }
 }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'Walien$notes',
+#         'USER': 'Walien',
+#         'PASSWORD': 'xxxxxxxxx',
+#         # 'HOST': 'Walien.mysql.pythonanywhere-services.com',
+#         'HOST': '127.0.0.1',
+#     }
+# }
 
 
 
