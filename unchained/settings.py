@@ -25,7 +25,7 @@ SECRET_KEY = 'wlg)7whoh=4bhj0cc5)$!b40f-cdcnpz)*$%=iq^^(7gci_xsx'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['walien.pythonanywhere.com', 'www.walien.me']
+ALLOWED_HOSTS = ['127.0.0.1', 'www.walien.me']
 
 
 # Application definition

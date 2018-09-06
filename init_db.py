@@ -6,19 +6,27 @@ from notes.models import Note
 
 
 # Clear table
+print('>> Clearing Notes table ...')
 Note.objects.all().delete()
+print('>> Notes table has been cleared.')
 
 # Insert notes
-n = Note(note_text='This is the 1st note.')
-n.save()
-n = Note(note_text='This is the 2nd note.')
-n.save()
-n = Note(note_text='This is the 3rd note. Stop press next button!')
-n.save()
-n = Note(note_text='The database is self-destroying ...')
-n.save()
-n = Note(note_text='Just kidding! Hahahahahahahaha')
-n.save()
+notes = [
+  "A remote mysql database has been created and hosted on pythonanywhere.\n"
+  " This tutorial shows how to access to the remote database when developing "
+  "locally. \nYou may refer to https://github.com/WilliamRo/unchained.git for help.",
+  'Step 1: Modify settings.py file',
+  'Step 2: Provide my.cnf file in the root. This file should be excluded from '
+  'git cuz it contains the password of your database. Note that the host '
+  'attribute in your local codes is different from that deployed on the cloud.'
+  ' As for details, please ask William for help.',
+  'Finally, if you want to modify the remote database, you must give your '
+  'python code access to the remote database.',
+]
+for note in notes:
+  n = Note(note_text=note)
+  n.save()
+print('>> Default notes inserted:')
 
 for note in Note.objects.all():
-  print('> {}'.format(note.note_text))
+  print('  [{}] {}'.format(note.pk, note.note_text))
