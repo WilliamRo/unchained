@@ -1,5 +1,4 @@
-from django.http import HttpResponse
-from django.template import loader
+from django.shortcuts import render
 from notes.models import Note
 
 
@@ -12,11 +11,10 @@ def index(request, note_id=None):
     if len(notes) == 1: note = notes[0]
     else: note = None
 
-  template = loader.get_template('index.html')
   context = {
     'note': note,
     'previous': note.previous if note else None,
     'next': note.next if note else None,
   }
-  return HttpResponse(template.render(context, request))
+  return render(request, 'index.html', context)
 
