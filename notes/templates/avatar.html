@@ -8,8 +8,53 @@
     <title>Avatar</title>
 </head>
 <body>
-    You should see a cat down here.
-    <br>
-    <img src="{% get_media_prefix %}002.jpg">
+
+<div style="font-size: 22px; height: 35px">
+SOLUTION to display images uploaded by user:
+</div>
+<div style="height: 2px; background-color: crimson"></div>
+Step 1:
+<br>
+As per [1], images uploaded by users should be served so as to be displayed:
+<br>
+Edit webplatform/urls.py, add '+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)'
+to the urlpatterns list after doing some corresponding importing.
+<br>
+The code snippet can be found in [1]. Notice that this is only for
+developing stage of our MIPP.
+<div style="height: 2px; background-color: lightgrey"></div>
+Step 2:
+<br>
+In pages need to display images uploaded by users, { % load static  % }
+at the top of the page instead of { % load staticfiles % } as you
+previously do.
+<br>
+At last, modify the src attribute in img tag to be
+{ % get_media_prefix % }{ { your_image_path } }
+instead of
+{ % static your_image_path % }
+<div style="height: 2px; background-color: lightgrey"></div>
+PS:
+<br>
+Images in http://www.mipp.tech/datamanagement/dataset_act can be now
+displayed normally.
+<br>
+Open a console shell in pythonanywhere, cd to ~/www.mipp.tech and type
+'git diff' to see the differences of the source code.
+<br>
+<div style="height: 2px; background-color: lightgrey"></div>
+References:
+<br>
+<a href="https://docs.djangoproject.com/en/2.1/howto/static-files/#serving-files-uploaded-by-a-user-during-development">
+    1. The official Django ducument
+</a>
+<br>
+<a href="https://stackoverflow.com/questions/45645387/serve-images-with-django">
+    2. Stack Overflow: Serve image in Django
+</a>
+<div style="height: 2px; background-color: lightgrey"></div>
+Demo: <br>
+<img src="{% get_media_prefix %}002.jpg">
+
 </body>
 </html>
