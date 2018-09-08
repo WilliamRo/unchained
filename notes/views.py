@@ -18,3 +18,6 @@ def index(request, note_id=None):
   }
   return render(request, 'index.html', context)
 
+
+def avatar(request):
+  return render(request, 'avatar.html', {})
